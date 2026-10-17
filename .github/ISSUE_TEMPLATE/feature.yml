@@ -1,0 +1,38 @@
+name: Feature
+description: A building, behavior, or art change you want
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        See [docs/VERSION_ROLLOUT.md](https://github.com/eromrab/Timberborn/blob/main/docs/VERSION_ROLLOUT.md) for what is already planned (and which version it targets).
+  - type: dropdown
+    id: mod
+    attributes:
+      label: Mod
+      options:
+        - Tidetails
+        - Wetlands
+        - Badwater Rush
+        - Unsure / several
+    validations:
+      required: true
+  - type: textarea
+    id: request
+    attributes:
+      label: What do you want
+      description: Gameplay, art, or packaging. Note if it would break saves.
+    validations:
+      required: true
+  - type: dropdown
+    id: version_fit
+    attributes:
+      label: Suggested version (optional)
+      options:
+        - Not sure
+        - 0.2.0 Paths & presentation
+        - 0.3.0 Housing & population
+        - 0.4.0 Building clarity & water UX
+        - 1.0.0 Full faction
+        - After 1.0

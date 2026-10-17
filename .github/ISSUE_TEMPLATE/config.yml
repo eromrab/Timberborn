@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Version rollout
+    url: https://github.com/eromrab/Timberborn/blob/main/docs/VERSION_ROLLOUT.md
+    about: What each Tidetails / Wetlands / Badwater Rush version includes
+  - name: Open tasks and VERIFY list
+    url: https://github.com/eromrab/Timberborn/blob/main/docs/things-to-fix.txt
+    about: In-progress checklist (OPEN / VERIFY / DONE)

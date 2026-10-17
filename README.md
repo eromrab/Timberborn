@@ -2,6 +2,14 @@
 
 Harmony mods and blueprint packs for [Timberborn](https://store.steampowered.com/app/1062090/Timberborn/).
 
+**Current versions:** Tidetails `0.1.0` · Wetlands `0.1.0` · Badwater Rush `0.1.0` (game `1.1.0.0+`)
+
+| What | Link |
+|------|------|
+| Release roadmap / version plan | [docs/VERSION_ROLLOUT.md](docs/VERSION_ROLLOUT.md) |
+| Open tasks / VERIFY list | [docs/things-to-fix.txt](docs/things-to-fix.txt) |
+| File a bug or feature | [New issue](https://github.com/eromrab/Timberborn/issues/new/choose) |
+
 | Mod folder | C# project | Role |
 |------------|------------|------|
 | [`Tidetails/`](Tidetails/) | [`src/Tidetails/`](src/Tidetails/) | Tidetails faction (depends on Wetlands library) |
@@ -42,11 +50,6 @@ Mod folders stay at the repo root so you can symlink or copy each folder into th
 4. Point Timberborn at the mod folders (symlink, junction, or copy into your mods path).
 
 **Dependency:** build `Wetlands` before `Tidetails` (project reference). Building the solution handles order.
-
-## Docs
-
-- [Release roadmap](docs/VERSION_ROLLOUT.md)
-- [Open tasks / verify list](docs/things-to-fix.txt)
 
 ## Workshop thumbnails
 

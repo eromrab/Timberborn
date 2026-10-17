@@ -1,0 +1,40 @@
+name: Bug
+description: Something is broken in Tidetails, Wetlands, or Badwater Rush
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Check the [VERIFY list](https://github.com/eromrab/Timberborn/blob/main/docs/things-to-fix.txt) and [version plan](https://github.com/eromrab/Timberborn/blob/main/docs/VERSION_ROLLOUT.md) first — it may already be tracked.
+  - type: dropdown
+    id: mod
+    attributes:
+      label: Mod
+      options:
+        - Tidetails
+        - Wetlands
+        - Badwater Rush
+        - Unsure / several
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Mod version
+      description: From the mod's manifest.json (currently 0.1.0)
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: game_version
+    attributes:
+      label: Timberborn version
+      placeholder: "1.1.x"
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you saw instead.
+    validations:
+      required: true
