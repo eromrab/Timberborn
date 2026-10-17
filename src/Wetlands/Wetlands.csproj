@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>Wetlands</AssemblyName>
+    <RootNamespace>Wetlands</RootNamespace>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <ModScriptsDir>$(MSBuildThisFileDirectory)..\..\Wetlands\Scripts</ModScriptsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony" HintPath="$(HarmonyDir)\0Harmony.dll" Private="false" />
+    <Reference Include="Bindito.Core" HintPath="$(GameManagedDir)\Bindito.Core.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameManagedDir)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="Timberborn.AssetSystem" HintPath="$(GameManagedDir)\Timberborn.AssetSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BaseComponentSystem" HintPath="$(GameManagedDir)\Timberborn.BaseComponentSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BlockSystem" HintPath="$(GameManagedDir)\Timberborn.BlockSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BlueprintSystem" HintPath="$(GameManagedDir)\Timberborn.BlueprintSystem.dll" Private="false" />
+    <Reference Include="Timberborn.Buildings" HintPath="$(GameManagedDir)\Timberborn.Buildings.dll" Private="false" />
+    <Reference Include="Timberborn.Common" HintPath="$(GameManagedDir)\Timberborn.Common.dll" Private="false" />
+    <Reference Include="Timberborn.ConstructionSites" HintPath="$(GameManagedDir)\Timberborn.ConstructionSites.dll" Private="false" />
+    <Reference Include="Timberborn.Coordinates" HintPath="$(GameManagedDir)\Timberborn.Coordinates.dll" Private="false" />
+    <Reference Include="Timberborn.DeconstructionSystem" HintPath="$(GameManagedDir)\Timberborn.DeconstructionSystem.dll" Private="false" />
+    <Reference Include="Timberborn.EntitySystem" HintPath="$(GameManagedDir)\Timberborn.EntitySystem.dll" Private="false" />
+    <Reference Include="Timberborn.LevelVisibilitySystem" HintPath="$(GameManagedDir)\Timberborn.LevelVisibilitySystem.dll" Private="false" />
+    <Reference Include="Timberborn.Localization" HintPath="$(GameManagedDir)\Timberborn.Localization.dll" Private="false" />
+    <Reference Include="Timberborn.MapIndexSystem" HintPath="$(GameManagedDir)\Timberborn.MapIndexSystem.dll" Private="false" />
+    <Reference Include="Timberborn.ModManagerScene" HintPath="$(GameManagedDir)\Timberborn.ModManagerScene.dll" Private="false" />
+    <Reference Include="Timberborn.Persistence" HintPath="$(GameManagedDir)\Timberborn.Persistence.dll" Private="false" />
+    <Reference Include="Timberborn.PrefabOptimization" HintPath="$(GameManagedDir)\Timberborn.PrefabOptimization.dll" Private="false" />
+    <Reference Include="Timberborn.RecoverableGoodSystem" HintPath="$(GameManagedDir)\Timberborn.RecoverableGoodSystem.dll" Private="false" />
+    <Reference Include="Timberborn.SingletonSystem" HintPath="$(GameManagedDir)\Timberborn.SingletonSystem.dll" Private="false" />
+    <Reference Include="Timberborn.TemplateCollectionSystem" HintPath="$(GameManagedDir)\Timberborn.TemplateCollectionSystem.dll" Private="false" />
+    <Reference Include="Timberborn.TemplateInstantiation" HintPath="$(GameManagedDir)\Timberborn.TemplateInstantiation.dll" Private="false" />
+    <Reference Include="Timberborn.TemplateSystem" HintPath="$(GameManagedDir)\Timberborn.TemplateSystem.dll" Private="false" />
+    <Reference Include="Timberborn.TerrainSystem" HintPath="$(GameManagedDir)\Timberborn.TerrainSystem.dll" Private="false" />
+    <Reference Include="Timberborn.Timbermesh" HintPath="$(GameManagedDir)\Timberborn.Timbermesh.dll" Private="false" />
+    <Reference Include="Timberborn.TimbermeshDTO" HintPath="$(GameManagedDir)\Timberborn.TimbermeshDTO.dll" Private="false" />
+    <Reference Include="Timberborn.TickSystem" HintPath="$(GameManagedDir)\Timberborn.TickSystem.dll" Private="false" />
+    <Reference Include="Timberborn.WaterSystem" HintPath="$(GameManagedDir)\Timberborn.WaterSystem.dll" Private="false" />
+    <Reference Include="Timberborn.WorldPersistence" HintPath="$(GameManagedDir)\Timberborn.WorldPersistence.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="CopyToMod" AfterTargets="Build">
+    <MakeDir Directories="$(ModScriptsDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModScriptsDir)" />
+  </Target>
+
+</Project>

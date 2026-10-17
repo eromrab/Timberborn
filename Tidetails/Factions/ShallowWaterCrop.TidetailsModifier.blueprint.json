@@ -1,0 +1,14 @@
+{
+  "FloodableNaturalResourceSpec": {
+    "MinWaterHeight": 0,
+    "MaxWaterHeight": 1
+  },
+  "PlantableSpec": {
+    "ResourceGroup": "AquaticFarmhouse"
+  },
+  "CuttableSpec": {
+    "Yielder": {
+      "ResourceGroup": "AquaticFarmhouse"
+    }
+  }
+}

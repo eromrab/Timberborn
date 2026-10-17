@@ -1,0 +1,17 @@
+{
+  "BuildingSpec": {
+    "BuildingCost": [
+      {
+        "Id": "Log",
+        "Amount": 10
+      }
+    ]
+  },
+  "FinishableWaterObstacleSpec": {
+    "Height": 0.9
+  },
+  "LabeledEntitySpec": {
+    "DisplayNameLocKey": "Building.Dam.Tidetails.DisplayName",
+    "DescriptionLocKey": "Building.Dam.Tidetails.Description"
+  }
+}

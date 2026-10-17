@@ -1,0 +1,26 @@
+{
+  "RecipeSpec": {
+    "Id": "FermentedSpadderdock",
+    "BackwardCompatibleIds": [],
+    "DisplayLocKey": "Good.FermentedSpadderdock.PluralDisplayName",
+    "CycleDurationInHours": 2.0,
+    "Ingredients": [
+      {
+        "Id": "Spadderdock",
+        "Amount": 4
+      }
+    ],
+    "Products": [
+      {
+        "Id": "FermentedSpadderdock",
+        "Amount": 10
+      }
+    ],
+    "ProducedSciencePoints": 0,
+    "Fuel": "",
+    "CyclesFuelLasts": 0,
+    "FuelCapacity": 0,
+    "CyclesCapacity": 6,
+    "Icon": "Sprites/Goods/GrilledSpadderdockIcon"
+  }
+}

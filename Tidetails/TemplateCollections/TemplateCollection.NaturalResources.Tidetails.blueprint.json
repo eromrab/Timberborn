@@ -1,0 +1,12 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "NaturalResources.Tidetails",
+    "Blueprints": [
+      "NaturalResources/Crops/Cattail/Cattail.blueprint",
+      "NaturalResources/Crops/Spadderdock/Spadderdock.blueprint",
+      "NaturalResources/Trees/LiveOak/LiveOak.Tidetails.blueprint",
+      "NaturalResources/Trees/BaldCypress/BaldCypress.Tidetails.blueprint",
+      "NaturalResources/Trees/WaterTupelo/WaterTupelo.Tidetails.blueprint"
+    ]
+  }
+}

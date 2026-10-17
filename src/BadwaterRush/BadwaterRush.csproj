@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>BadwaterRush</AssemblyName>
+    <RootNamespace>BadwaterRush</RootNamespace>
+    <Nullable>disable</Nullable>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <ModScriptsDir>$(MSBuildThisFileDirectory)..\..\BadwaterRush\Scripts</ModScriptsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony" HintPath="$(HarmonyDir)\0Harmony.dll" Private="false" />
+    <Reference Include="Bindito.Core" HintPath="$(GameManagedDir)\Bindito.Core.dll" Private="false" />
+    <Reference Include="System.Collections.Immutable" HintPath="$(GameManagedDir)\System.Collections.Immutable.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameManagedDir)\UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="Timberborn.BaseComponentSystem" HintPath="$(GameManagedDir)\Timberborn.BaseComponentSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BlueprintSystem" HintPath="$(GameManagedDir)\Timberborn.BlueprintSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BeaverContaminationSystem" HintPath="$(GameManagedDir)\Timberborn.BeaverContaminationSystem.dll" Private="false" />
+    <Reference Include="Timberborn.BonusSystem" HintPath="$(GameManagedDir)\Timberborn.BonusSystem.dll" Private="false" />
+    <Reference Include="Timberborn.LifeSystem" HintPath="$(GameManagedDir)\Timberborn.LifeSystem.dll" Private="false" />
+    <Reference Include="Timberborn.ModManagerScene" HintPath="$(GameManagedDir)\Timberborn.ModManagerScene.dll" Private="false" />
+    <Reference Include="Timberborn.Navigation" HintPath="$(GameManagedDir)\Timberborn.Navigation.dll" Private="false" />
+    <Reference Include="Timberborn.NeedBehaviorSystem" HintPath="$(GameManagedDir)\Timberborn.NeedBehaviorSystem.dll" Private="false" />
+    <Reference Include="Timberborn.NeedSpecs" HintPath="$(GameManagedDir)\Timberborn.NeedSpecs.dll" Private="false" />
+    <Reference Include="Timberborn.NeedSystem" HintPath="$(GameManagedDir)\Timberborn.NeedSystem.dll" Private="false" />
+    <Reference Include="Timberborn.TickSystem" HintPath="$(GameManagedDir)\Timberborn.TickSystem.dll" Private="false" />
+    <Reference Include="Timberborn.WaterSystem" HintPath="$(GameManagedDir)\Timberborn.WaterSystem.dll" Private="false" />
+    <Reference Include="Timberborn.WalkingSystem" HintPath="$(GameManagedDir)\Timberborn.WalkingSystem.dll" Private="false" />
+    <Reference Include="Timberborn.WorkSystem" HintPath="$(GameManagedDir)\Timberborn.WorkSystem.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="CopyToMod" AfterTargets="Build">
+    <MakeDir Directories="$(ModScriptsDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModScriptsDir)" />
+  </Target>
+
+</Project>

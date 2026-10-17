@@ -1,0 +1,11 @@
+{
+  "GoodCollectionSpec": {
+    "CollectionId": "Tidetails",
+    "Goods": [
+      "CattailRoot",
+      "Spadderdock",
+      "FermentedCattail",
+      "FermentedSpadderdock"
+    ]
+  }
+}

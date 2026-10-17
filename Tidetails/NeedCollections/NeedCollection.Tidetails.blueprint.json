@@ -1,0 +1,10 @@
+{
+  "NeedCollectionSpec": {
+    "CollectionId": "Tidetails",
+    "Needs": [
+      "FermentedCattail",
+      "FermentedSpadderdock",
+      "Romance"
+    ]
+  }
+}

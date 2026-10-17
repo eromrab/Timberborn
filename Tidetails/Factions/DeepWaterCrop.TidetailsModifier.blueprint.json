@@ -1,0 +1,6 @@
+{
+  "FloodableNaturalResourceSpec": {
+    "MinWaterHeight": 1,
+    "MaxWaterHeight": 99
+  }
+}

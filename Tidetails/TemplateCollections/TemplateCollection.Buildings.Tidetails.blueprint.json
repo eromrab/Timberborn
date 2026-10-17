@@ -1,0 +1,13 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.Tidetails",
+    "Blueprints": [
+      "Buildings/Paths/MudSlide/MudSlide.Tidetails.blueprint",
+      "Buildings/Paths/MudBlock/MudBlock.Tidetails.blueprint",
+      "Buildings/Food/AquaticFarmhouse/AquaticFarmhouse.Folktails.blueprint",
+      "Buildings/Landscaping/Blockage/Blockage.Tidetails.blueprint",
+      "Buildings/Landscaping/NaturalDam/NaturalDam.Tidetails.blueprint",
+      "Buildings/Housing/RomanceRetreat/RomanceRetreat.Tidetails.blueprint"
+    ]
+  }
+}

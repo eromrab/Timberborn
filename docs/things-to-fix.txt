@@ -1,0 +1,64 @@
+DONE (verify in game, then delete lines):
+
+[x] Aquatic farmhouse harvest + cost (20 logs, no planks)
+
+[x] Natural dam / blockage tool order (before vanilla counterparts)
+
+[x] Compact water wheel: ground-level power only (no vertical shaft at Z=1)
+
+[x] Path speed: vanilla costs reversed (fast in water, slow on land for Tidetails)
+
+[x] Badwater Rush mod (separate): 2x age, 4x work/walk when contaminated
+
+[x] Blockage / Natural dam: beavers can walk on top; paths do not generate on them
+
+[x] Water trees: live oak, bald cypress, water tupelo
+
+[x] Romance retreat prototype (2x2 lodge, breeding pod logic); Iron Teeth pods hidden for Tidetails
+
+
+
+OPEN:
+
+[ ] Wet path look. See-through / building mode tints the real path material muddy brown (same trick as the mud block) so it stays thin and textured. Normal view stays a normal road. Confirm.
+
+[ ] Romance retreat polish: boarded-up windows on model, custom icon. Visit behavior is in (Romance need, pair only, kit on the way out, stock wiped). Confirm in game, then move to VERIFY.
+
+[ ] Later Romance Retreats. More complex goods (wine, meat) stock the building and turn the visit on. Those produce 2 or 3 kits instead of 1. The basic retreat stays berries and water, one kit, Romance from 0 to 1.
+
+[ ] Natural dam height: mod uses 0.9 hold vs vanilla 0.65 — confirm intentional vs match vanilla 0.65.
+
+[ ] Sleep in water if homeless. Yes, possible. Beavers with no home walk to a random safe tile (SleepNeedBehavior → RandomDestinationPicker), then sleep there. A Tidetails-only patch can prefer a tile with water.
+
+[ ] Water pumps should say "Partially Solid" instead of "Solid". The game has no partial line: BlockObject.Solid is true if ANY tile is stackable, and the bullet is always Buildings.Solid. Deep Water Pump already mixes Stackable None and BlockObject, so it still says Solid. Fix is a description patch when only some tiles are stackable.
+
+[ ] Building stat bullets for where it can be built: Deep Water, Shallow / Land, Dry Land Only. Yes, possible. Same description system as the Solid bullet (IEntityDescriber). Add one line from the placement spec instead of burying it in the paragraph.
+
+[ ] Later: Beaver gender (male/female or similar). Not in vanilla; would affect Romance Retreat pairing, UI, and maybe names/portraits. Explore only if we want pairing rules beyond "any two adults."
+
+VERIFY (not confirmed — check in game, then move to DONE or reopen):
+
+[ ] Tidetails beaver fur: more blue-green / teal (3D texture recolor)
+
+[ ] Tidetails bigger tail: custom adult/child models for swim-fast / land-slow look
+
+[ ] Tree display names: Live Oak, Bald Cypress, Water Tupelo (forester/gatherer dropdowns — title case both words)
+
+[ ] Succulents hidden from the Forester plant list; loading a save no longer crashes the forestry menu
+
+[ ] Romance retreat finishes building (no animation-controller crash)
+
+[ ] Romance retreat: no "Dried out"; new ones only on dry land; floods like a normal building if water covers it
+
+[ ] Romance retreat is no longer a breeding pod. Stock water and berries, two beavers visit when Romance is low, the need fills only while both are inside, they leave with a kit, and the stock is emptied. Rebuild an old retreat so the save picks up the new building.
+
+[ ] Mod names: "Eromrab's Tidetails" and "Eromrab's Badwater Rush"; faction picker uses "Eromrab's Tidetails"
+
+[] fish or ducks instead of bees for helping crops in an area grow faster
+
+
+REFERENCE:
+
+Vanilla breeding: Iron Teeth = Breeding Pod / Advanced Breeding Pod (water + berries, pod building). Folktails = Lodge / Double / Triple Lodge (ProcreationHouseSpec + dwellings, land housing). No other faction has a third unique breeding building in base game.
+
+Steam Workshop: set visibility to Unlisted for link-only sharing (not on public browse).

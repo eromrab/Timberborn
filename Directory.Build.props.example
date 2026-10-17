@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    Copy to Directory.Build.props (gitignored) and set paths for your machine.
+    MSBuild imports Directory.Build.props automatically from repo root.
+  -->
+  <PropertyGroup>
+    <GameManagedDir>C:\Program Files (x86)\Steam\steamapps\common\Timberborn\Timberborn_Data\Managed</GameManagedDir>
+    <HarmonyDir>C:\Program Files (x86)\Steam\steamapps\workshop\content\1062090\3284904751</HarmonyDir>
+  </PropertyGroup>
+</Project>

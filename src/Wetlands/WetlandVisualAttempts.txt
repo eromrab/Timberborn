@@ -1,0 +1,148 @@
+Wetland visuals: what was tried
+================================
+
+Summary
+-------
+
+The wetland is a landscaping block (1 Log + 2 Water). When it finishes, the construction site is removed and the tile is remembered as marsh ground. It is not a leftover building. Cattail seedlings show on empty wetland tiles and hide when a path or building is on the tile. Paths on top stay dirt paths. Crops and trees that grow in one tile of water can grow here. Lumberjack, forester, and gatherer flags work. A tile is wet when it touches water, another wetland, or a mud block that touches water. The 5-tile water-entrance limit from Tidetails applies only to paths, not to wetlands.
+
+The ground color is not a separate cube and not an overlay. The game draws grass as one terrain mesh with one material (TerrainURP). That material samples three textures: _BaseAlbedoTex, _SplatAlbedoTex, and _DetailAlbedoTex. It ignores _MainTex, _BaseMap, _Color, _BaseColor, and vertex colors. Grass, farmland, and desert are faded together inside that one material by global maps. Changing those globals, or the world UV scale, changes every tile on the map.
+
+Each terrain piece is a 1x1 square centered on a grid corner, from local -0.5 to 0.5. After placement it covers one quarter of each of the four tiles that meet at that corner. Coloring the whole piece colors one quarter of the wetland tile and also spills onto the three neighbors. Coloring only the wetland coordinate leaves the other three quarters as grass. Those leftover grass quarters are what looked like "quadrants."
+
+Current look, accepted for now: the piece is cut along its center (local x = 0 and z = 0). A quarter is recolored only when the tile it sits on is a wetland. Grass quarters stay grass. The recolor keeps the light and dark of the original grass texture and shifts it to a darker green. Wet and dry are both green, so a tile that is wrongly classified as dry does not turn orange. Vanilla grass, farms, and desert are not modified.
+
+Do not bring back: overlay quads, SetField, swapping the global field or desert textures, changing ProjectionUVScale, forcing desert intensity, spawning the Terrain Block finished model, or painting a whole neighboring piece.
+
+
+What the shader actually uses
+-----------------------------
+
+Confirmed from TerrainURP and TerrainMaterialMap:
+
+- Albedo textures are per material: _BaseAlbedoTex, _SplatAlbedoTex, _DetailAlbedoTex. material.SetTexture works for these.
+- _SplatAlbedoColor multiplies the splat. Setting it to white removes the game's green tint. If the recolor does not fully replace the pixel, the raw dirt color shows through (orange and brown).
+- Grass tiling is _Albedo_Triplanar_Tile, sampled in world space. It is not _ProjectionUVScale.
+- These are Shader.SetGlobalTexture, shared by every terrain tile: _WetFieldTex, _DryFieldTex, _DesertTex, _BlendingNoise.
+- _ProjectionUVScale is 1 / WorldTiling.HorizontalTileSize (16). Desert, field, and noise UVs use world XZ times that scale. Changing it without rebaking those maps stretches farms, desert, and dry ground.
+- Grass-to-desert fade is per-cell maps plus blending noise inside the one material. A different material per mesh makes a hard edge. That fade cannot be reused for wetlands without replacing those global maps.
+- TerrainMaterialMap pushes the globals once after load in play, and every LateUpdate in the editor.
+- Desert intensity is visual only (SoilMoistureService). It is not "this tile is wetland."
+
+
+How a terrain tile is drawn
+----------------------------
+
+TerrainMeshManager.GetTerrainBlock returns a shared mesh for that corner shape. The mesh is rotated when it is imported. It is then moved by GridToWorld(coordinates) + (1, 0, 1). GridToWorld is (x, height, y).
+
+A flat piece's vertices run from -0.5 to 0.5 on X and Z. The center of the piece is the shared corner of four tiles. One triangle of that piece usually crosses more than one tile, so assigning the whole triangle to whichever tile contains its center paints a diagonal wedge into the neighbor.
+
+UpdateMesh only assigns materials when the material count changes. A postfix on TileComponents.UpdateMesh always assigns the built materials, or the recolor never appears.
+
+LateUpdate returns immediately when there are no dirty shape codes. Adding tiles to the invalid list does not rebuild the mesh. The invalidator calls UpdateTile directly, including the cell and its neighbors.
+
+
+Attempts, in order
+------------------
+
+1. Overlay quads
+   A separate ground renderer drew a quad on each wetland tile.
+   Result: a hard edge at water, the quad sat on paths, and the color was blotchy and yellow.
+   Removed. File was WetlandGroundRenderer.cs. Do not restore it.
+
+2. SetField plus a global field texture
+   ITerrainService.SetField makes the tile use the farm-field path in the terrain shader. The field albedo is one global texture, shared with crops.
+   Result: farms turned the marsh color.
+   Abandoned. The current code calls UnsetField. Do not call SetField for wetlands.
+
+3. Recoloring the wrong material properties
+   The first material swaps set _MainTex, _BaseMap, _Color, _BaseColor, and vertex colors.
+   Result: no visible change. The terrain shader does not read those.
+   The textures that matter are _BaseAlbedoTex, _SplatAlbedoTex, and _DetailAlbedoTex.
+
+4. Spawned Terrain Block finished model
+   The blueprint still names Buildings/Landscaping/TerrainBlock/TerrainBlock.Finished.Model, but the finished site is deleted. Spawning that model as the wetland was tried because the request was "a copy of the dirt block."
+   Result: red triangles, a yellow cliff stripe, and frames. It also read as rails or a gray cube when occupations and GroundRaiser were copied too directly.
+   Removed. The wetland is not a spawned cube.
+
+5. Material swap did not show up
+   Two engine bugs blocked the swap.
+   UpdateMesh keeps the prefab materials when the submesh count matches. Fixed with a Harmony postfix that always sets sharedMaterials from the built mesh.
+   Marking tiles invalid did nothing because LateUpdate returns when _dirtyCodes is empty. Fixed by calling UpdateTile directly through reflection.
+   GetInstanceID is obsolete (CS0619). The tint cache key is the material, the wet flag, and a step, not the instance id.
+
+6. ProjectionUVScale without rebaking
+   Setting the global UV scale to 1/mapSize, without rebuilding the desert, field, and noise maps, stretched every projected texture.
+   Result: grass, farms, and desert looked washed out and stretched. Wetlands were still yellow.
+   Reverted.
+
+7. WetlandTerrainBlend
+   Rebaked _DesertTex, _WetFieldTex, _DryFieldTex, and _BlendingNoise into unique world-space textures, set ProjectionUVScale to 1/map span, and forced desert intensity to 1 on wetland tiles so the shader would fade marsh-as-desert into grass.
+   Result: huge desert cracks, washed grass, and wetlands that looked like normal grass. Farms and desert were stretched again.
+   Deleted WetlandTerrainBlend.cs and the Harmony patches on desert intensity and UpdateShaderProperties. Do not restore them. Do not call SetDesertIntensity for wetlands.
+
+8. Whole-tile recolor, early palettes
+   Once the material swap actually applied, only the wetland coordinate's mesh was recolored.
+   A tan and dry-field palette looked like farmland.
+   A yellow-brown palette did not match the grass next to it and showed hard corners.
+   A red-brown tile was closer, but only part of the tile was colored.
+   Contrast stretch (about 2.4) plus a green-channel boost made neon streaks.
+   A mild multiply (green times about 0.82, then 22 percent toward marsh) looked like vanilla grass with hard edges.
+   Darkening red and green and lerping 70 percent toward mud made the tile all brown.
+   Lerping toward green and leaving only the darkest 30 percent brown, with a dry palette of (0.62, 0.48, 0.32), produced orange tiles. Shore tiles were classified dry because the water check was height-specific and missed water more than one level below a cliff. The orange was that dry palette, not a new texture.
+
+9. Water check
+   Wetness now uses IThreadSafeWaterMap.IsWaterOnAnyHeight on the tile and its eight neighbors, any column with depth greater than 0. Groups of wetlands connect by the four cardinal neighbors. A group is wet if any member touches water.
+   The wet set is computed in Tick, not in PostLoad. The first mesh build can be dry until the first tick rebuilds it. Dry and wet palettes are both green so that first frame cannot turn the tile orange.
+   Current colors: wet dark (0.07, 0.20, 0.05), wet grass (0.28, 0.58, 0.14), dry crack (0.16, 0.28, 0.08), dry dirt (0.34, 0.48, 0.16).
+
+10. Coloring neighbor meshes
+    Coloring every mesh that touches a wetland filled the tile, because the missing quarters live on the neighbor pieces. It also painted those pieces' grass quarters. The marsh color bled onto grass.
+    Stopped.
+
+11. Triangle tests that guessed the cell
+    Several formulas mapped a vertex to a grid cell (local plus coordinate, with and without the (1, 0, 1) offset, and with X/Z swapped). The code picked whichever formula put the most vertices of a known wetland mesh back on that cell.
+    A triangle was marsh if at least two vertices landed in a wetland, and a neighbor mesh was skipped if more than half its vertices were inside.
+    Result: large diagonal sawteeth into the grass. The mapping was off, and a triangle that only shared an edge was still painted. Reverted.
+
+12. Whole mesh again, luminance recolor
+    Only the exact wetland coordinate was recolored. Source luminance was stretched across a dark-green to light-green range and multiplied so the light and dark of the grass texture remained.
+    _SplatAlbedoColor was set to white so the baked texture is the color, instead of the game's green multiply revealing raw dirt.
+    Result: the color was accepted. The shape was still quarters, because the other three quarters of the tile are other meshes. Interior of a large group looked full, since those neighbors were also wetlands.
+
+13. Centroid test with the real translation
+    World position of a vertex is vertex + GridToWorld(coordinates) + (1, 0, 1). A triangle was colored when its center fell on a wetland tile. Neighbor meshes within one tile were included.
+    This formula matches the engine. It still failed. A terrain triangle crosses the corner, so its center sits in one tile while the triangle covers other tiles. The whole triangle was painted and the sawteeth came back.
+    Reverted.
+
+14. Raised cap on the wetland mesh
+    A 1x1 quad was added slightly above the top of the wetland mesh, meant to cover the grass quarters.
+    The source mesh really is 1x1 centered on the corner, so that quad covers all four quarters, including grass. It also often did not win the depth test, so the grass quarters still showed.
+    Removed.
+
+15. Current: clip to the four quarters
+    Confirmed from the game's 000U terrain mesh: positions run from -0.5 to 0.5 on X and Z. The piece is centered on the corner.
+    Each triangle is split at local x = 0 and local z = 0. The center of each piece is converted with the real translation and floor. If that tile is a wetland, the piece uses the recolored material. If it is grass, it keeps the original material.
+    When all four tiles around a corner are wetlands of the same wetness, the whole piece is recolored and no split is needed.
+    Meshes are rebuilt for the corner and the three positive neighbors, which are the four pieces that cover one wetland tile. The invalidator already rebuilds the surrounding terrain chunks.
+    Result: accepted for now. The tile reads as a full square of darker grass. Grass beside it stays grass. Edges are hard, not a noisy fade.
+
+
+Other fixes that are still in place
+------------------------------------
+
+- Cattail seedlings load NaturalResources/Crops/Cattail/CattailSeedling. Two plants are placed on the tile. They hide when a path, a building, or an invisible level slice is there.
+- MoistureCalculationTask and FloodableNaturalResourceService treat a wet wetland group as moisturizing, with water depth at least 1. Crops that need one tile of water can use it.
+- MatterBelowValidator treats a wetland as ground, so buildings that must sit on ground can sit on it.
+- Construction resources are consumed. RecoverableGoodProvider and deconstruction are disabled, then the site is deleted.
+- Tidetails "within 5 tiles of a water entrance" is gated on TidetailsWetPathSpec and skips mud slides. Wetlands do not get that spec.
+
+
+Files that were added and then deleted
+---------------------------------------
+
+- WetlandGroundRenderer.cs. Overlay quads.
+- WetlandTerrainTextures.cs. Global UV scale change.
+- WetlandTerrainBlend.cs. Rebaked desert, field, and noise maps, plus forced desert intensity.
+
+Leave them deleted.

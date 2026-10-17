@@ -1,0 +1,170 @@
+{
+  "FactionSpec": {
+    "Id": "Tidetails",
+    "Order": 100,
+    "Avatar": "Sprites/Avatars/TidetailsAdult",
+    "ChildAvatar": "Sprites/Avatars/TidetailsChild",
+    "BotAvatar": "Sprites/Avatars/IronTeethBot",
+    "ContaminatedAdultAvatar": "Sprites/Avatars/TidetailsContaminatedAdult",
+    "ContaminatedChildAvatar": "Sprites/Avatars/TidetailsContaminatedChild",
+    "Logo": "Sprites/Avatars/TidetailsLogo",
+    "NewGameFullAvatar": "Sprites/Avatars/TidetailsFullNewGame",
+    "Textures": [
+      "Materials/Beavers/Tidetails/Adult/BeaverAdult1.Tidetails",
+      "Materials/Beavers/Tidetails/Adult/BeaverAdult2.Tidetails",
+      "Materials/Beavers/Tidetails/Adult/BeaverAdult3.Tidetails",
+      "Materials/Beavers/Tidetails/Adult/BeaverAdult4.Tidetails",
+      "Materials/Beavers/Tidetails/Adult/BeaverAdult5.Tidetails"
+    ],
+    "ChildTextures": [
+      "Materials/Beavers/Tidetails/Child/BeaverChild1.Tidetails",
+      "Materials/Beavers/Tidetails/Child/BeaverChild2.Tidetails",
+      "Materials/Beavers/Tidetails/Child/BeaverChild3.Tidetails"
+    ],
+    "MaterialCollectionIds": [
+      "IronTeeth",
+      "Folktails"
+    ],
+    "TemplateCollectionIds": [
+      "Buildings.IronTeeth",
+      "Buildings.Tidetails",
+      "Characters.IronTeeth",
+      "ModularShaftParts.IronTeeth",
+      "NaturalResources.IronTeeth",
+      "NaturalResources.Tidetails",
+      "Planes.IronTeeth"
+    ],
+    "PathMaterial": "Buildings/Paths/Path/Path.IronTeeth",
+    "BaseWoodMaterial": "Materials/UberAtlas/Materials/IronTeeth/BaseWood_Grey.IronTeeth",
+    "NeedCollectionIds": [
+      "IronTeeth",
+      "Tidetails"
+    ],
+    "GoodCollectionIds": [
+      "IronTeeth",
+      "Tidetails"
+    ],
+    "BlueprintModifiers": [
+      {
+        "Original": "characters/beaver/beaveradult.blueprint",
+        "Modifier": "Factions/BeaverAdult.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "characters/beaver/beaverchild.blueprint",
+        "Modifier": "Factions/BeaverChild.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/paths/path/path.blueprint",
+        "Modifier": "Factions/Path.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/landscaping/dam/dam.ironteeth.blueprint",
+        "Modifier": "Factions/Dam.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/canola/canola.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/cassava/cassava.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/corn/corn.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/trees/succulent/succulent.blueprint",
+        "Modifier": "Factions/Succulent.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/eggplant/eggplant.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/kohlrabi/kohlrabi.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/soybean/soybean.blueprint",
+        "Modifier": "Factions/ShallowWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/trees/mangrove/mangrove.blueprint",
+        "Modifier": "Factions/DeepWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/cattail/cattail.blueprint",
+        "Modifier": "Factions/DeepWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "naturalresources/crops/spadderdock/spadderdock.blueprint",
+        "Modifier": "Factions/DeepWaterCrop.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/food/fermenter/fermenter.ironteeth.blueprint",
+        "Modifier": "Factions/Fermenter.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/food/aquaticfarmhouse/aquaticfarmhouse.folktails.blueprint",
+        "Modifier": "Factions/AquaticFarmhouse.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/power/compactwaterwheel/compactwaterwheel.ironteeth.blueprint",
+        "Modifier": "Factions/CompactWaterWheel.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/housing/breedingpod/breedingpod.ironteeth.blueprint",
+        "Modifier": "Factions/BreedingPod.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/housing/advancedbreedingpod/advancedbreedingpod.ironteeth.blueprint",
+        "Modifier": "Factions/AdvancedBreedingPod.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/food/farmhouse/farmhouse.ironteeth.blueprint",
+        "Modifier": "Factions/Farmhouse.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/water/deepwaterpump/deepwaterpump.ironteeth.blueprint",
+        "Modifier": "Factions/DeepWaterPump.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/water/deepmechanicalpump/deepmechanicalpump.ironteeth.blueprint",
+        "Modifier": "Factions/DeepMechanicalPump.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/water/deepbadwaterpump/deepbadwaterpump.ironteeth.blueprint",
+        "Modifier": "Factions/BreedingPod.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/wellbeing/doubleshower/doubleshower.ironteeth.blueprint",
+        "Modifier": "Factions/DoubleShower.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/storage/smalltank/smalltank.ironteeth.blueprint",
+        "Modifier": "Factions/Tank.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/storage/mediumtank/mediumtank.ironteeth.blueprint",
+        "Modifier": "Factions/Tank.TidetailsModifier.blueprint"
+      },
+      {
+        "Original": "buildings/storage/largetank/largetank.ironteeth.blueprint",
+        "Modifier": "Factions/Tank.TidetailsModifier.blueprint"
+      }
+    ],
+    "StartingBuildingId": "DistrictCenter.IronTeeth",
+    "SoundId": "Common",
+    "DisplayNameLocKey": "Faction.Tidetails.DisplayName",
+    "DescriptionLocKey": "Faction.Tidetails.Description",
+    "GameOverMessageLocKey": "Faction.IronTeeth.GameOver.Message",
+    "GameOverFlavorLocKey": "Faction.IronTeeth.GameOver.Flavor"
+  },
+  "FactionWonderSpec": {
+    "WonderCompletionImage": "UI/Images/WonderCompletion/wonder-completion-ironteeth",
+    "WonderLaunchSound": "UI.Buildings.Wonder.EarthRepopulator",
+    "WonderCompletionFlavorLocKey": "Faction.IronTeeth.WonderCompletionFlavor",
+    "WonderCompletionMessageLocKey": "Faction.IronTeeth.WonderCompletionMessage"
+  }
+}

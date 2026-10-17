@@ -1,0 +1,20 @@
+{
+  "NeedSpec": {
+    "Id": "Age",
+    "BackwardCompatibleIds": [],
+    "Order": 5,
+    "NeedGroupId": "BasicNeeds",
+    "CharacterType": "Beaver",
+    "StartingValue": -6.0,
+    "MinimumValue": -6.0,
+    "MaximumValue": 44.0,
+    "DailyDelta": 0.0,
+    "ImportanceMultiplier": 0.0,
+    "Effectiveness": 1.0,
+    "Wastable": true,
+    "HoursWarningThreshold": 0.0,
+    "DisplayNameLocKey": "Need.Age.DisplayName",
+    "FavorableWellbeing": 0,
+    "UnfavorableWellbeing": 0
+  }
+}

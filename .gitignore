@@ -1,0 +1,41 @@
+# --- .NET / MSBuild ---
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+*.rsuser
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Local game/Harmony paths (copy from Directory.Build.props.example)
+Directory.Build.props
+Directory.Build.user.props
+
+# Compiled mod DLLs (copied by csproj CopyToMod targets)
+**/Scripts/*.dll
+**/Scripts/*.pdb
+
+# --- Python (tools/) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+.env
+
+# --- OS junk ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Generated Workshop thumbnails (regenerate with tools/generate_*_thumbnail.py) ---
+Tidetails/thumbnail.png
+Wetlands/thumbnail.png
+BadwaterRush/thumbnail.png

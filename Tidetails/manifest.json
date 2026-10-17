@@ -1,0 +1,22 @@
+{
+  "Name": "Eromrab's Tidetails",
+  "Version": "0.1.0",
+  "Id": "Tidetails",
+  "MinimumGameVersion": "1.1.0.0",
+  "Description": "Teal beavers adapted to underwater life: oversized tails make them swift swimmers and slow walkers. Most buildings need water entrances. Badwater speeds them up—but shortens their lifespan.",
+  "RequiredMods": [
+    {
+      "Id": "Harmony",
+      "MinimumVersion": "2.4.0"
+    },
+    {
+      "Id": "BadwaterRush",
+      "MinimumVersion": "0.1.0"
+    },
+    {
+      "Id": "Wetlands", 
+      "MinimumVersion": "0.1.0"
+    }
+  ],
+  "OptionalMods": []
+}

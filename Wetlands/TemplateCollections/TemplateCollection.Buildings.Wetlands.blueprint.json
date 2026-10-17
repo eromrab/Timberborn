@@ -1,0 +1,8 @@
+{
+  "TemplateCollectionSpec": {
+    "CollectionId": "Buildings.Wetlands",
+    "Blueprints": [
+      "Buildings/Landscaping/Wetland/Wetland.blueprint"
+    ]
+  }
+}

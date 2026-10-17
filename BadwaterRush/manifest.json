@@ -1,0 +1,14 @@
+{
+  "Name": "Eromrab's Badwater Rush",
+  "Version": "0.1.0",
+  "Id": "BadwaterRush",
+  "MinimumGameVersion": "1.1.0.0",
+  "Description": "Beavers skip unwell and become contaminated immediately. Contaminated beavers keep their jobs, age twice as fast, work and move four times as fast, and keep their Romance. An Age bar shows childhood left of the mark and adulthood filling to death. Contamination clears 10 ticks after they leave badwater. Required by Tidetails.",
+  "RequiredMods": [
+    {
+      "Id": "Harmony",
+      "MinimumVersion": "2.4.0"
+    }
+  ],
+  "OptionalMods": []
+}

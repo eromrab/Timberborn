@@ -1,0 +1,87 @@
+TIMBERBORN — LIVE OAK + SPANISH MOSS
+Art brief for Eromrab's Tidetails mod
+
+WHAT THIS IS
+A tree for the city-builder Timberborn. The look is stylized and chunky
+(see folder 2-game-style), not realistic. Think vanilla oak/mangrove, but
+the silhouette of a Florida southern live oak draped in Spanish moss.
+
+Folders in this pack:
+  1-target-look          Real trees. Match THIS silhouette and moss, not the photo detail.
+  2-game-style           Vanilla Timberborn oak. Match THIS art style and scale.
+  3-current-placeholder  What is in the game now. Do NOT copy this moss.
+  4-meshes-to-replace    Current .timbermesh files (scale/slot reference only).
+
+
+TARGET LOOK
+- Southern live oak (Quercus virginiana): wide, flat, spreading crown.
+  Heavy limbs reach out sideways more than they go up.
+- Spanish moss: gray-green curtains hanging FROM the branches, especially
+  the outer skirt. The top of the crown stays mostly green. Moss is not
+  dots, mushrooms, flowers, or icicles sitting on the leaves.
+- Seedling: little or no moss.
+- Dry mature: drought-stressed leaves, moss can stay.
+- Dead mature: bare snag. Moss optional / sparse.
+- Stump: short leftover after cutting.
+
+
+SCALE
+- Ground footprint: 1 x 1 tile. Height: 3 tiles. A tile is 1 x 1 x 1.
+- Origin at the TILE CORNER (0,0,0). Trunk centered at (0.5, 0, 0.5).
+- Y is up.
+- Canopy MAY overhang neighboring tiles (vanilla oak already does).
+- Keep the trunk in the center of the tile so cutting still works.
+- Grid in the preview PNGs is 1 tile per square.
+
+Vanilla mature oak is only ~170 triangles. You can go higher, but keep it
+stylized and cheap — a few thousand tris on the mature tree including moss
+is plenty. This is not a Cities: Skylines tree.
+
+
+FILES TO DELIVER (7 meshes)
+  LiveOakSeedling
+  LiveOakSeedlingDead
+  LiveOakSeedlingDry
+  LiveOakMature             <- hero mesh, this is the one that matters most
+  LiveOakMatureDead
+  LiveOakMatureDry
+  LiveOakMatureStump
+
+If you can only do one mesh first, do LiveOakMature.
+
+
+MATERIALS (exact names on the meshes)
+  Tidetails.LiveOak         trunk + leaves
+  Tidetails.SpanishMoss     hanging moss only, double-sided
+
+First pass: no custom textures needed. UV to those two in-game materials.
+Custom PNG textures are optional later.
+
+
+EXPORT
+Timberborn uses a custom format, .timbermesh, via Mechanistry's Blender plugin:
+  https://github.com/mechanistry/timbermesh
+
+Environment / tree settings:
+  - Merge meshes: ON
+  - Vertex animation: OFF
+  - No animation clips
+
+If you cannot export .timbermesh, send a .blend (or FBX) with:
+  - Y-up, origin at tile corner, trunk at (0.5, 0, 0.5)
+  - Material names as above
+  - One object (or clearly named objects) per stage listed above
+
+Do not include colliders, icons, or game JSON. We will wire those in.
+
+
+DO NOT
+- Put round leaf-cards of moss on TOP of the canopy (reads as mushrooms).
+- Make a few thin white drips (the current placeholder).
+- Copy Cities: Skylines / photogrammetry trees. Wrong style, and we cannot
+  ship other people's assets.
+
+
+CONTACT / ITERATION
+Mature alive first, then the other stages. Screenshots or a turnaround
+of LiveOakMature is enough for a first review.

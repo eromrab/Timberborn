@@ -1,0 +1,17 @@
+{
+  "WalkerSpeedManagerSpec": {
+    "BaseWalkingSpeed": 1.89,
+    "BaseSlowedSpeed": 0.945
+  },
+  "TidetailsWaterAffinitySpec": {
+    "WaterSpeedMultiplier": 2.04,
+    "TubeWetFurPointsPerHour": 0.5
+  },
+  "Children": {
+    "Model_Preserved": {
+      "TimbermeshSpec": {
+        "Model": "Characters/Beaver/BeaverChild.Tidetails.Model"
+      }
+    }
+  }
+}

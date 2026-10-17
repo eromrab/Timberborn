@@ -1,0 +1,14 @@
+{
+  "Name": "Eromrab's Wetlands",
+  "Version": "0.1.0",
+  "Id": "Wetlands",
+  "MinimumGameVersion": "1.1.0.0",
+  "Description": "A landscaping tool that places marshy ground on dry land. Paths sit on top, and shallow-water plants can grow on it. Required by Tidetails, usable by any faction.",
+  "RequiredMods": [
+    {
+      "Id": "Harmony",
+      "MinimumVersion": "2.4.0"
+    }
+  ],
+  "OptionalMods": []
+}

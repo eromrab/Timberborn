@@ -1,0 +1,5 @@
+ID,Text,Comment
+Building.Wetland.DisplayName,Wetland,
+Building.Wetland.Description,"A marshy patch of ground. Place on dry land. Paths sit on top; crops and trees that grow in one tile of water can grow here.",
+Building.Wetland.FlavorDescription,"The grass grows long where the water never quite leaves.",
+Wetlands.Preview.DryLandOnly,Build on dry land.,
